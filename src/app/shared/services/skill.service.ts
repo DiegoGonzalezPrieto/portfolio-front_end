@@ -8,7 +8,7 @@ import {catchError, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class SkillService {
-	url = 'http://localhost:8080/skill'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/skill'
 
 	constructor (private http : HttpClient){}
 	

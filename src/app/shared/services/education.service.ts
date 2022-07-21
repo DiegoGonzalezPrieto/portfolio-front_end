@@ -8,7 +8,7 @@ import {catchError, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class EducationService {
-	url = 'http://localhost:8080/edu'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/edu'
 
 	constructor (private http : HttpClient){}
 	

@@ -10,7 +10,6 @@ export class UserService {
 
 	constructor(
 		private tokenService: TokenService,
-		private route : ActivatedRoute
 	) { }
 
   private _userId = 1; 

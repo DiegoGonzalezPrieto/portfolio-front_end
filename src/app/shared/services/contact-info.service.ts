@@ -7,7 +7,7 @@ import {ContactInfo} from '../models/contact-info';
   providedIn: 'root'
 })
 export class ContactInfoService {
-	url = 'http://localhost:8080/cInfo'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/cInfo'
 
 	constructor (private http : HttpClient){}
 	

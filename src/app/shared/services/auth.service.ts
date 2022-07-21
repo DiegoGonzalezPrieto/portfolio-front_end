@@ -10,7 +10,7 @@ import {NewUser} from '../models/new-user';
 })
 export class AuthService {
 
-	url = 'http://localhost:8080/auth/'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/auth/'
 
 	constructor(private http: HttpClient) { }
 

@@ -14,6 +14,7 @@ export class EducationItemComponent implements OnInit {
   img: Image = <Image>{id: -1, url: '', altText: '', name: ''};
   editing = false;
   @Input() canEdit: boolean = false;
+  @Input() userId: number = 0;
 
   loggedIn = this.userServ.loggedIn;
 

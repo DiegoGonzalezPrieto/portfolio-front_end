@@ -81,7 +81,6 @@ export class LangSkillFormComponent implements OnInit {
 			  name : values.name
 		  }
 	  };
-	  console.log(JSON.stringify(ls));
 	  return ls;
   }
 

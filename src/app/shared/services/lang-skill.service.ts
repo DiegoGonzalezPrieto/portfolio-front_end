@@ -8,7 +8,7 @@ import {LanguageSkill} from '../models/language-skill';
 })
 export class LangSkillService {
 
-	url = 'http://localhost:8080/lSkill'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/lSkill'
 
 	constructor (private http : HttpClient){}
 	

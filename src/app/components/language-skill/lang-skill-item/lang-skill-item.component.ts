@@ -12,6 +12,7 @@ export class LangSkillItemComponent implements OnInit {
 
   editing = false;
   @Input() canEdit: boolean = false;
+  @Input() userId: number = 0;
 
   loggedIn = this.userServ.loggedIn;
 

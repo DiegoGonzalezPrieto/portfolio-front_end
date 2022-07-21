@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {TokenService} from 'src/app/shared/services/token.service';
 import {UserService} from 'src/app/shared/services/user.service';
 
@@ -10,7 +10,7 @@ import {UserService} from 'src/app/shared/services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
-	adminId = 1; // TODO : define adminId
+	adminId = 1; 
 	profileId = 0;
 	loggedIn = this.userServ.loggedIn;
 	userId = this.userServ.userId;
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
 	onLogOut(){
 		this.tokenSerice.logOut();
 		this.userServ.checkToken();
-		window.location.reload();
+		this.router.navigate(['/login'])
 	}
 
 	goToAppInfo(){
@@ -46,7 +46,11 @@ export class NavbarComponent implements OnInit {
 	goToProfile(id :number | null){
 		if (!id){
 			this.router.navigateByUrl('/info', { skipLocationChange: true }).then(() => {
-				this.router.navigate(['perfil/' + this.userId + '/ver']);
+				if (this.loggedIn){
+					this.router.navigate(['perfil/' + this.userId + '/ver']);
+				} else {
+					this.router.navigate(['/login']);
+				}
 			});
 		} else {
 			this.router.navigateByUrl('/info', { skipLocationChange: true }).then(() => {

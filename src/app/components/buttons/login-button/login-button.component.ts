@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login-button',
@@ -24,7 +23,6 @@ export class LoginButtonComponent implements OnInit {
 		this.router.navigate(['/login'])
 	  } else if (this.loggedIn){
 		this.onLogOut.emit();
-		this.router.navigate(['/login'])
 	  }
   }
 

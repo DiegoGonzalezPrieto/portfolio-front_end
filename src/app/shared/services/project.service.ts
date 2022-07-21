@@ -7,7 +7,7 @@ import {Project} from '../models/project';
   providedIn: 'root'
 })
 export class ProjectService {
-	url = 'http://localhost:8080/project'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/project'
 
 	constructor (private http : HttpClient){}
 	

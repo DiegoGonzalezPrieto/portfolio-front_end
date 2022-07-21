@@ -11,6 +11,7 @@ export class SkillItemComponent implements OnInit {
   
   editing = false;
   @Input() canEdit: boolean = false;
+  @Input() userId = 0;
 
   loggedIn = this.userServ.loggedIn;
 

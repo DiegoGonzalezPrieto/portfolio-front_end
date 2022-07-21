@@ -15,7 +15,7 @@
 
 		<div class="col-md">
 			<div class="form-floating mb-2 mt-3">
-				<input class="form-control" id="repoUrl" type="text" placeholder="Url de repositorio" required formControlName="repoUrl">
+				<input class="form-control" id="repoUrl"  maxlength="250" type="text" placeholder="Url de repositorio" required formControlName="repoUrl">
 				<label for="repoUrl">Url de repositorio</label>
 				<div *ngIf="(repoUrl?.dirty || repoUrl?.touched)">
 					<div *ngIf="repoUrl?.invalid" class="alert alert-danger">
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<div class="form-floating mb-2">
-			<input type="url"class="form-control" id="url" placeholder="Url de imagen" formControlName="url">
+			<input type="url"class="form-control" id="url"  maxlength="250" placeholder="Url de imagen" formControlName="url">
 			<label for="url">Url de imagen</label>
 		</div>
 	</div>

@@ -1,10 +1,10 @@
 <div class="container-md border border-black">
-	<div class="row align-items-center p-5">
+	<div class="row align-items-center p-4">
 		<div class="col-10">
 			<h2>Experiencia</h2>
 		</div>
 		<div class="col-2 text-center align-items-baseline">
-			<app-add-button *ngIf="loggedIn && canEdit" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
+			<app-add-button *ngIf="loggedIn && canEdit || loggedIn && userId == 1" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
 		</div>
 	</div>
 	<div *ngIf="addForm">
@@ -19,6 +19,7 @@
 			<app-work-exp-item [workExp]="we" 
 				(onEdit)="toggleEditForm($event)" 
 				 [canEdit]="canEdit"
+			 	[userId]="userId"
 				*ngIf="!editingList.includes(we.id)">
 			</app-work-exp-item>
 		

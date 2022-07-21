@@ -8,7 +8,7 @@ import {catchError, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class WorkExperienceService {
-	url = 'http://localhost:8080/wexp'
+	url = 'https://enigmatic-savannah-95548.herokuapp.com/wexp'
 
 	constructor (private http : HttpClient){}
 	
