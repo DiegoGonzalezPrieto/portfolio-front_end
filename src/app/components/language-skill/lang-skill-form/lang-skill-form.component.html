@@ -1,0 +1,72 @@
+<form  [formGroup]="langSkillForm" (ngSubmit)="onSubmit()">
+
+	<div class="row">
+		<div class="col-md">
+			<div class="form-floating mb-2">
+				<input class="form-control" id="name" type="text" placeholder="Idioma" formControlName="name">
+				<label for="name">Idioma</label>
+				<div *ngIf="(name?.dirty || name?.touched)">
+					<div *ngIf="name?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="row">
+
+			<div class="col-md">
+				<div class="form-floating mb-2">
+					<select class="form-select" id="literacyLevel" type="radio" formControlName="literacyLevel">
+						<option value="BEGINNER">Inicial</option>
+						<option value="INTERMEDIATE">Intermedio</option>
+						<option value="ADVANCED">Avanzado</option>
+						<option value="BILINGUAL">Bilingüe</option>
+					</select>
+					<label for="literacyLevel">Nivel lectoescritura</label>
+					<div *ngIf="literacyLevel?.touched">
+						<div *ngIf="literacyLevel?.invalid" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md">
+				<div class="form-floating mb-2">
+					<select class="form-select" id="oralLevel" type="radio" formControlName="oralLevel">
+						<option value="BEGINNER">Inicial</option>
+						<option value="INTERMEDIATE">Intermedio</option>
+						<option value="ADVANCED">Avanzado</option>
+						<option value="BILINGUAL">Bilingüe</option>
+					</select>
+					<label for="oralLevel">Nivel oral</label>
+					<div *ngIf="oralLevel?.touched">
+						<div *ngIf="oralLevel?.invalid" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<button type="submit" 
+			[disabled]="!langSkillForm.valid" class="btn m-2" 
+											  [ngClass]="langSkillForm.valid ? 'btn-primary' : 'btn-error'">
+		OK
+	</button>
+
+	<app-edit-button 
+											  [isDisabled]="langSkillForm.status == 'DISABLED'"
+											  [editForm]="true" 
+											  *ngIf="isEdit" 
+											  (editClick)="stopEdit()">
+	</app-edit-button>
+
+	<app-del-button 
+											  (deleteItem)="deleteLanguageSkill()" 
+											  *ngIf="isEdit">
+	</app-del-button>
+</form>
+

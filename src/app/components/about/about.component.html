@@ -1,0 +1,21 @@
+<div *ngIf="!editing" class="container-sm p-0 rounded-bottom" [ngStyle]="{'background-image' : 'url('+ person.backPic.url +')'}" style="background-size: 100%;">
+	<br><br><br>
+	<img class="w-25 m-4 rounded border border-5" [src]="person.profPic.url ? person.profPic.url : defaultImg" [alt]="person.profPic.altText">
+	<div class="bg-black text-light p-3 rounded-bottom">
+		<span class="badge bg-secondary mb-1">{{person.jobTitle}}</span>
+		<h3 class="ml-1">{{person.firstName + " " + person.lastName}}</h3>
+		<p class="ml-1"><b>{{person.city.cityName + ", " + person.city.countryName}}</b></p>
+		<p class="text-light ml-1 lh-sm" [innerText]="person.briefCv"></p>
+		<div *ngIf="loggedIn">
+			<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+		</div>
+	</div>
+</div>
+
+<div class="container-sm" *ngIf="loggedIn && editing">
+	<app-about-form [editedPerson]="person" 
+		(editClick)="toggleEdit()"
+		(onEdit)="editPerson($event, person.id)"
+		>
+	</app-about-form>
+</div>

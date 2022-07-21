@@ -1,0 +1,17 @@
+<div class="card mb-2">
+	<div class="card-header">
+		{{levelFormat(education.level)}}
+	</div>
+	<div class="card-body">
+			<h5 class="card-title">Título: {{education.title}}</h5>
+			<img *ngIf="img" [src]="img.url" [alt]="img.altText" [name]="img.name" style="max-width:150px; max-height:150px" align="right">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Institución - {{education.institution}}</li>
+				<li class="list-group-item">Período: {{education.startYear}} - {{education.current ? "actual" : education.endYear}}</li>
+			</ul>
+
+		<div *ngIf="loggedIn">
+			<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="card p-3" style="width: 23em; height: 600px; margin:20px">
+	<img *ngIf="img" class="card-img-top" style="max-height:200px"  [src]="img.url" [alt]="img.altText" [name]="img.name"> 
+	<div class="card-body">
+		<h5 class="card-title "><a [href]="project.repoUrl" class="text-dark">{{project.name}}</a></h5>
+		<p class="card-text"  [innerText]="project.description"></p>
+		<p class="card-text" >
+		<u>Tecnologías utilzadas:</u> <span *ngFor="let t of project.technologies"> {{t}}   /</span>
+		</p>
+
+		<div *ngIf="loggedIn" class="card-body">
+			<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,71 @@
+<div class="text-center mt-5" *ngIf="isLogged">
+	<h2>Ya iniciaste sesión.</h2>
+</div>
+<div class="container d-flex mt-5 justify-content-center" *ngIf="!isLogged">
+	<div class="card ">
+		<div class="card-header"> 
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" routerLink="/sign-up">Registro</a>
+				</li>
+			</ul>
+		</div>
+		<div class="card-body">
+			<form  [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+
+				<div class="form-floating mb-2 mt-3">
+					<input class="form-control" id="name" type="text" placeholder="Nombre" required formControlName="name">
+					<label for="name">Nombre</label>
+					<div *ngIf="(name?.dirty || name?.touched)">
+						<div *ngIf="name?.invalid" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+
+				<div class="form-floating mb-2 mt-3">
+					<input class="form-control" id="userName" type="text" placeholder="Nombre de Usuario" required formControlName="userName">
+					<label for="userName">Nombre de usuario</label>
+					<div *ngIf="(userName?.dirty || userName?.touched)">
+						<div *ngIf="userName?.invalid" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+
+				<div class="form-floating mb-2 mt-3">
+					<input class="form-control" id="password" type="password" placeholder="Contraseña" required formControlName="password">
+					<label for="password">Contraseña</label>
+					<div *ngIf="(password?.dirty || password?.touched)">
+						<div *ngIf="password?.invalid" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+
+				<div class="form-floating mb-2 mt-3">
+					<input class="form-control" id="email" type="email" placeholder="Correo electrónico" required formControlName="email">
+					<label for="email">Correo electrónico</label>
+					<div *ngIf="(email?.dirty || email?.touched)">
+						<div *ngIf="email?.errors?.['email']" class="alert alert-danger">
+						Correo inválido.
+						</div>
+						<div *ngIf="email?.errors?.['required']" class="alert alert-danger">
+							Completar.
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" 
+						[disabled]="!signupForm.valid" 
+						class="btn m-2" 																[ngClass]="signupForm.valid ? 'btn-primary' : 'btn-error'">
+					OK
+				</button>
+			</form>
+			<div *ngIf="isSignUpFail" class="container-sm alert alert-info">El registro falló.</div>
+		</div>
+	</div>
+</div>

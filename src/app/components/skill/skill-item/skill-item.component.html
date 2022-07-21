@@ -1,0 +1,24 @@
+<div class="card mb-2">
+	<div class="card-header">
+		{{(skill.type)}}
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md">
+				<h5 class="card-title">{{skill.name}}</h5>
+				<p class="card-text" [innerText]="skill.description"></p>
+
+				<div *ngIf="loggedIn">
+					<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+				</div>
+			</div>
+			<div class="col-md">
+				<svg height="100" width="100">
+					<circle cx="50" cy="50" r="31.831" stroke="#9ec5fe" stroke-width="10" />
+					<circle [attr.stroke-dasharray]="strokeArray"  stroke-dashoffset="20" cx="50" cy="50" r="31.831" stroke="#084298" stroke-width="8" fill="white"/>
+					<text [attr.x]="skill.percent == 100 ? 30 : 35" y="55" style="font-family: sans-serif;">{{skill.percent}}%</text>
+				</svg> 
+			</div>
+		</div>
+	</div>
+</div>

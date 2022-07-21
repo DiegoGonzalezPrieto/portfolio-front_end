@@ -1,0 +1,33 @@
+<div class="container-md  border border-black">
+	<div class="row align-items-center p-5">
+		<div class="col-10">
+			<h2>Proyectos</h2>
+		</div>
+		<div class="col-2 text-center align-items-baseline" *ngIf="loggedIn">
+			<app-add-button *ngIf="loggedIn && canEdit" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
+		</div>
+	</div>
+	<div *ngIf="addForm">
+		<app-project-form 
+			 [isEdit]="false"
+			(newProject)="newProject($event, profileId)">
+		</app-project-form>
+	</div>
+	<div class="card-group">
+		<div *ngFor="let p of projectList">
+			<app-project-item [project]="p" 
+				(onEdit)="toggleEditForm($event)" 
+				 [canEdit]="canEdit"
+				*ngIf="!editingList.includes(p.id)">
+			</app-project-item>
+		
+			<app-project-form [isEdit]="true" 
+				*ngIf="editingList.includes(p.id)" 
+				[editedProject]="p" 
+				(editClick)="toggleEditForm($event)" 
+				(onEdit)="editProject($event, p.id)" 
+				(onDelete)="deleteProject($event)">
+			</app-project-form>
+	</div>
+	</div>
+</div>

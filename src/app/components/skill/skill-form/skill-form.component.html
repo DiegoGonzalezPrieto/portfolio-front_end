@@ -1,0 +1,74 @@
+<form  [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+
+	<div class="row">
+		<div class="col-md">
+			<div class="form-floating mb-2 mt-3">
+				<input class="form-control" id="name" type="text" placeholder="Habilidad" required formControlName="name">
+				<label for="name">Habilidad</label>
+				<div *ngIf="(name?.dirty || name?.touched)">
+					<div *ngIf="name?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md">
+			<div class="form-floating mb-2 mt-3">
+				<input class="form-control" id="type" type="text" placeholder="Tipo de habilidad" formControlName="type">
+				<label for="type">Tipo de habilidad</label>
+				<div *ngIf="(type?.dirty || type?.touched)">
+					<div *ngIf="type?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-mb-2">
+			<div class="form-floating mb-2 mt-3">
+				<textarea class="form-control" id="description" placeholder="Descripción" formControlName="description" style="height: 7em" maxlength="250"></textarea>
+				<label for="description">Descripción</label>
+				<div *ngIf="(description?.dirty || description?.touched)">
+					<div *ngIf="description?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md mb-2">
+			<label for="percent">Nivel:	{{percent?.value}} </label>
+			<input type="range" min="1" max="100" class="form-range" id="percent" placeholder="Nivel" formControlName="percent">
+			<div *ngIf="(percent?.dirty || percent?.touched)">
+				<div *ngIf="percent?.invalid" class="alert alert-danger">
+					Completar.
+				</div>
+			</div>
+		</div>
+		<div class="col-md mb-2">
+		</div>
+	</div>
+
+	<button type="submit" 
+			[disabled]="!skillForm.valid" class="btn m-2" 
+											  [ngClass]="skillForm.valid ? 'btn-primary' : 'btn-error'">
+		OK
+	</button>
+
+	<app-edit-button 
+											  [isDisabled]="skillForm.status == 'DISABLED'"
+											  [editForm]="true" 
+											  *ngIf="isEdit" 
+											  (editClick)="stopEdit()">
+	</app-edit-button>
+
+	<app-del-button 
+											  (deleteItem)="deleteSkill()" 
+											  *ngIf="isEdit">
+	</app-del-button>
+</form>

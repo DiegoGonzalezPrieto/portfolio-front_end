@@ -1,0 +1,33 @@
+<div class="container-md border border-black">
+	<div class="row align-items-center p-5">
+		<div class="col-10">
+			<h2>Experiencia</h2>
+		</div>
+		<div class="col-2 text-center align-items-baseline">
+			<app-add-button *ngIf="loggedIn && canEdit" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
+		</div>
+	</div>
+	<div *ngIf="addForm">
+		<app-work-exp-form 
+			 [isEdit]="false"
+			(newWorkExperience)="newWorkExperience($event, profileId)">
+		</app-work-exp-form>
+	</div>
+
+	<div class="card-group">
+		<div style="width:30em" *ngFor="let we of workExpList">
+			<app-work-exp-item [workExp]="we" 
+				(onEdit)="toggleEditForm($event)" 
+				 [canEdit]="canEdit"
+				*ngIf="!editingList.includes(we.id)">
+			</app-work-exp-item>
+		
+			<app-work-exp-form [isEdit]="true" 
+				*ngIf="editingList.includes(we.id)" 
+				[editedWorkExperience]="we" 
+				(editClick)="toggleEditForm($event)" 
+				(onEdit)="editWorkExperience($event, we.id)" 
+				(onDelete)="deleteWorkExperience($event)"></app-work-exp-form>
+		</div>
+	</div>
+</div>

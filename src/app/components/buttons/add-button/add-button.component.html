@@ -1,0 +1,6 @@
+<button type="button"
+	(click)="addItem()"
+	[ngClass]="{'btn' : true, 'btn-primary' : !addForm, 'btn-secondary' : addForm}"
+>
+{{addForm ? "Cancelar" : "+" }}
+</button>

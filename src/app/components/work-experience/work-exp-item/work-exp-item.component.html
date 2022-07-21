@@ -1,0 +1,18 @@
+<div class="card mb-2" style="max-width:100%; margin:5px">
+	<div class="card-header">
+		{{typeFormat(workExp.type)}}
+	</div>
+	<div class="card-body">
+			<h5 class="card-title">{{workExp.jobTitle}}</h5>
+			<img *ngIf="img" [src]="img.url" [alt]="img.altText" [name]="img.name" style="max-width:150px; max-height:150px" align="right">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Empresa - {{workExp.company}}</li>
+				<li class="list-group-item">Período: {{workExp.startYear}} - {{workExp.current ? "actual" : workExp.endYear}}</li>
+				<li class="list-group-item" [innerText]="workExp.description"></li>
+			</ul>
+
+		<div *ngIf="loggedIn">
+			<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+		</div>
+	</div>
+</div>

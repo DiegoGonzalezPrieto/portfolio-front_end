@@ -1,0 +1,13 @@
+<div class="card mb-2">
+	<div class="card-body">
+		<h5 class="card-title">Idioma: {{langSkill.language.name}}</h5>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Nivel oral: {{levelFormat(langSkill.oralLevel)}}</li>
+				<li class="list-group-item">Nivel lectoescritura: {{levelFormat(langSkill.literacyLevel)}}</li>
+			</ul>
+
+		<div *ngIf="loggedIn">
+			<app-edit-button *ngIf="loggedIn && canEdit" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+		</div>
+	</div>
+</div>

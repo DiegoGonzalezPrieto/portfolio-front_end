@@ -1,0 +1,142 @@
+<form  [formGroup]="workExpForm" (ngSubmit)="onSubmit()">
+
+	<div class="form-floating mb-2 mt-3">
+		<input class="form-control" id="jobTitle" type="text" placeholder="Título" required formControlName="jobTitle">
+		<label for="jobTitle">Puesto</label>
+		<div *ngIf="(jobTitle?.dirty || jobTitle?.touched)">
+			<div *ngIf="jobTitle?.invalid" class="alert alert-danger">
+				Completar.
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md">
+			<div class="form-floating mb-2">
+				<input class="form-control" id="company" type="text" placeholder="Institución" formControlName="company">
+				<label for="company">Empresa</label>
+				<div *ngIf="(company?.dirty || company?.touched)">
+					<div *ngIf="company?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md">
+			<div class="form-floating mb-2">
+				<select class="form-select" id="type" type="radio" formControlName="type">
+					<option value="FULL_TIME">Full-time</option>
+					<option value="PART_TIME">Part-time</option>
+					<option value="FREELANCE">Freelance</option>
+				</select>
+				<label for="type">Tipo de empleo</label>
+				<div *ngIf="type?.touched">
+					<div *ngIf="type?.invalid" class="alert alert-danger">
+						Seleccionar.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-2">
+				<textarea class="form-control" id="description" placeholder="Descripción" style="height: 7em" maxlength="250" formControlName="description" ></textarea>
+				<label for="description">Descripción de tareas</label>
+				<div *ngIf="(description?.dirty || description?.touched)">
+					<div *ngIf="description?.invalid" class="alert alert-danger">
+						Completar.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div class="form-floating mb-2">
+				<input class="form-control" id="startYear" type="number" placeholder="Año de Inicio" formControlName="startYear">
+				<label for="startYear">Año Inicio</label>
+				<div *ngIf="startYear?.touched || startYear?.dirty">
+					<div *ngIf="startYear?.errors?.['required'] || startYear?.errors?.['pattern']" class="alert alert-danger">
+						Completar.
+					</div>
+					<div *ngIf="startYear?.errors?.['min']" class="alert alert-danger">
+						El año mínimo posible es {{runningYear - 70}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-6"  >
+			<div class="form-floating mb-2">
+				<input class="form-control" id="endYear" type="number" placeholder="Año de Finalización" formControlName="endYear">
+				<label for="endYear">Año Finalización</label>
+				<div *ngIf="endYear?.touched || endYear?.dirty">
+					<div *ngIf="endYear?.errors?.['required'] || endYear?.errors?.['pattern']" class="alert alert-danger">
+						Completar.
+					</div>
+					<div *ngIf="endYear?.errors?.['min']" class="alert alert-danger">
+						El año mínimo posible es {{runningYear - 70}}
+					</div>
+					<div *ngIf="endYear?.errors?.['max']" class="alert alert-danger">
+						El año máximo posible es {{runningYear + 10}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row alert alert-danger" 
+		 *ngIf="(startYear?.touched || startYear?.dirty) && (startYear?.touched || startYear?.dirty) && workExpForm.errors?.['badYears']">
+		El año de inicio debe ser inferior al de finalización.
+	</div>
+
+	<div class="form-check mb-2">
+		<input (change)="onCheck()" class="form-check-input" id="current" type="checkbox" formControlName="current">
+		<label class="form-check-label" for="current">En curso </label>
+	</div>
+
+	<hr>
+
+	<div formGroupName="companyLogo">
+		<h5>Imagen</h5>
+		<div class="row">
+			<div class="col-6">
+				<div class="form-floating mb-2">
+					<input class="form-control" id="name" placeholder="Título de la imagen" formControlName="name">
+					<label for="name">Título de la imagen</label>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="form-floating mb-2">
+					<input class="form-control" id="altText" placeholder="Descripción" formControlName="altText">
+					<label for="altText">Descripción</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-floating mb-2">
+			<input type="url" class="form-control" id="url" placeholder="Url de imagen" formControlName="url">
+			<label for="url">Url de imagen</label>
+		</div>
+	</div>
+
+	<button type="submit" 
+			[disabled]="!workExpForm.valid" class="btn m-2" 
+			[ngClass]="workExpForm.valid ? 'btn-primary' : 'btn-error'">
+		OK
+	</button>
+
+	<app-edit-button 
+											  [isDisabled]="workExpForm.status == 'DISABLED'"
+				[editForm]="true" 
+				*ngIf="isEdit" 
+				(editClick)="stopEdit()">
+	</app-edit-button>
+
+	<app-del-button 
+				(deleteItem)="deleteWorkExperience()" 
+											*ngIf="isEdit">
+	</app-del-button>
+</form>
+

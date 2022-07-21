@@ -1,0 +1,8 @@
+<button type="button"
+		[disabled]="isDisabled"
+		(click)="editItem()"
+		[ngClass]="{'btn m-2' : true, 'btn-warning' : !editForm, 'btn-secondary' : editForm}"
+		>
+		{{editForm ? "Cancelar" : "Editar"}}
+
+</button>

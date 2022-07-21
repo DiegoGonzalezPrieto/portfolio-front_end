@@ -1,0 +1,31 @@
+<div class="container-md">
+	<div class="row align-items-center">
+		<div class="col-10">
+			<h2>Idiomas</h2>
+		</div>
+		<div class="col-2 text-center align-items-baseline" *ngIf="loggedIn">
+			<app-add-button *ngIf="loggedIn && canEdit" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
+		</div>
+	</div>
+	<div *ngIf="addForm">
+		<app-lang-skill-form 
+			 [isEdit]="false"
+			(newLanguageSkill)="newLanguageSkill($event, profileId)">
+		</app-lang-skill-form>
+	</div>
+	<div *ngFor="let lSkill of langSkillList">
+		<app-lang-skill-item [langSkill]="lSkill" 
+			(onEdit)="toggleEditForm($event)" 
+			 [canEdit]="canEdit"
+			*ngIf="!editingList.includes(lSkill.id) ">
+		</app-lang-skill-item>
+
+		<app-lang-skill-form [isEdit]="true" 
+			*ngIf="editingList.includes(lSkill.id)" 
+			[editedLanguageSkill]="lSkill" 
+			(editClick)="toggleEditForm($event)" 
+			(onEdit)="editLanguageSkill($event, lSkill.id)" 
+			(onDelete)="deleteLanguageSkill($event)">
+		</app-lang-skill-form>
+	</div>
+</div>

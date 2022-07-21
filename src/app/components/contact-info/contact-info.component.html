@@ -1,0 +1,3 @@
+	<div >
+		<a *ngFor="let ci of contactInfoList;" [href]="ci.address" ><img class="mr-2"[src]="getIcon(ci.type)" [alt]="ci.type.toLowerCase()" style="height: 20px;margin-right: 10px;"></a>
+	</div>

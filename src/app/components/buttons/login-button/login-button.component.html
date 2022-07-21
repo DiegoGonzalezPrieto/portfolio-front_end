@@ -1,0 +1,7 @@
+<button type="button"
+	(click)="login()"
+	[ngClass]="{'btn m-2' : true, 'btn-warning' : loggedIn, 'btn-primary' : !loggedIn}"
+>
+{{loggedIn ? "Salir" : "Ingresar"}}
+
+</button>
