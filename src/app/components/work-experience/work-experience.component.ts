@@ -62,7 +62,10 @@ export class WorkExperienceComponent implements OnInit {
 	  .subscribe(workE => {
 		  this.workExpList.push(workE);
 		  this.toggleAddForm();
-  	  })
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleAddForm();
+	  })
   }
 
   // PUT - called from 
@@ -71,6 +74,9 @@ export class WorkExperienceComponent implements OnInit {
 	  this.wexpServ.modifyWorkExperienceById(we, id)
 	  .subscribe(workE =>{
 		  this.workExpList.splice(index, 1, workE)
+		  this.toggleEditForm(id);
+	  },(error) =>{
+		  alert("Hubo un error en la carga de información.");
 		  this.toggleEditForm(id);
 	  })
   }

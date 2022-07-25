@@ -60,7 +60,10 @@ export class EducationComponent implements OnInit {
 	  .subscribe(edu => {
 		  this.educationList.push(edu);
 		  this.toggleAddForm();
-  	  })
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleAddForm();
+	  })
   }
 
   // PUT - called from 
@@ -69,6 +72,9 @@ export class EducationComponent implements OnInit {
 	  this.eduServ.modifyEducationById(e, id)
 	  .subscribe(edu =>{
 		  this.educationList.splice(index, 1, edu)
+		  this.toggleEditForm(id);
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
 		  this.toggleEditForm(id);
 	  })
   }

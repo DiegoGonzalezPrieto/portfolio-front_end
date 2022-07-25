@@ -59,7 +59,10 @@ export class SkillComponent implements OnInit {
 	  .subscribe(s => {
 		  this.skillList.push(s);
 		  this.toggleAddForm();
-  	  })
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleAddForm();
+	  })
   }
 
   // PUT - called from 
@@ -68,6 +71,9 @@ export class SkillComponent implements OnInit {
 	  this.skillServ.modifySkillById(skill, id)
 	  .subscribe(s =>{
 		  this.skillList.splice(index, 1, s)
+		  this.toggleEditForm(id);
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
 		  this.toggleEditForm(id);
 	  })
   }

@@ -78,7 +78,9 @@ export class AboutComponent implements OnInit {
 	  .addPerson(p)
 	  .subscribe(pers =>{
 		  this.person = pers;
-	  } )
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+	  })
   }
 
   // PUT
@@ -87,7 +89,10 @@ export class AboutComponent implements OnInit {
 	.subscribe(pers =>{
 		this.person = pers;
 		this.toggleEdit();
-	})
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleEdit();
+	  })
   }
 
 

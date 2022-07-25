@@ -59,7 +59,10 @@ export class ProjectComponent implements OnInit {
 	  .subscribe(p => {
 		  this.projectList.push(p);
 		  this.toggleAddForm();
-  	  })
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleAddForm();
+	  })
   }
 
   // PUT - called from 
@@ -68,6 +71,9 @@ export class ProjectComponent implements OnInit {
 	  this.projServ.modifyProjectById(p, id)
 	  .subscribe(proj =>{
 		  this.projectList.splice(index, 1, proj)
+		  this.toggleEditForm(id);
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
 		  this.toggleEditForm(id);
 	  })
   }

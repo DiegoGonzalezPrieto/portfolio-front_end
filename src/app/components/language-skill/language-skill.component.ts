@@ -59,7 +59,10 @@ export class LanguageSkillComponent implements OnInit {
 	  .subscribe(langSkill => {
 		  this.langSkillList.push(langSkill);
 		  this.toggleAddForm();
-  	  })
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
+		  this.toggleAddForm();
+	  })
   }
 
   // PUT - called from 
@@ -68,6 +71,9 @@ export class LanguageSkillComponent implements OnInit {
 	  this.langSkillServ.modifyLanguageSkillById(langSkill, id)
 	  .subscribe(lSkill =>{
 		  this.langSkillList.splice(index, 1, lSkill)
+		  this.toggleEditForm(id);
+	  },(error) =>{
+		  alert("Hubo un error en la solicitud.");
 		  this.toggleEditForm(id);
 	  })
   }

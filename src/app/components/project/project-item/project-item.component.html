@@ -4,7 +4,7 @@
 		<h5 class="card-title "><a [href]="project.repoUrl" class="text-dark">{{project.name}}</a></h5>
 		<p class="card-text"  [innerText]="project.description"></p>
 		<p class="card-text" >
-		<u>Tecnologías utilzadas:</u> <span *ngFor="let t of project.technologies"> {{t}}   /</span>
+		<u>Tecnologías utilzadas:</u> <br> <span *ngFor="let t of project.technologies" style="margin-right: 5px;"> {{t}} /</span>
 		</p>
 
 		<div *ngIf="loggedIn" class="card-body">
