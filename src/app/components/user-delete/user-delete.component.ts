@@ -36,13 +36,14 @@ export class UserDeleteComponent implements OnInit {
 		  this.deleteUserServ
 		  .deleteUserById(this.appUserId)
 		  .subscribe(()=>{
-			  console.log("user deleted")
+			  this.tokenServ.logOut();
+			  this.router.navigate(["sign-up"]);
 		  });
 	  }
 
 	  cancelDelete(){
-		  console.log("cancel delete")
-		  this.router.navigate(["/perfil/" + this.userServ.userId])
+		  console.log("cancel delete");
+		  this.router.navigate(["/perfil/" + this.userServ.userId]);
 	  }
 
 }
