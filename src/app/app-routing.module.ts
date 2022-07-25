@@ -10,11 +10,13 @@ import {FullProfileComponent} from './components/profile/full-profile/full-profi
 import {ProfileComponent} from './components/profile/profile.component';
 import {ProjectComponent} from './components/project/project.component';
 import {SkillComponent} from './components/skill/skill.component';
+import {UserDeleteComponent} from './components/user-delete/user-delete.component';
 import {WorkExperienceComponent} from './components/work-experience/work-experience.component';
 
 const routes: Routes = [
 	{path: '', redirectTo: '/perfil/1', pathMatch: 'full'},
 	{path: 'login', component: LoginComponent},
+	{path: 'borrar', component: UserDeleteComponent},
 	{path: 'sign-up', component: SignUpComponent},
 	{path: 'info', component: AppInfoComponent},
 	{path: 'perfil/:id', component: ProfileComponent, children : [

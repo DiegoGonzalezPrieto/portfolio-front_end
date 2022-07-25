@@ -12,6 +12,7 @@ export class WorkExpItemComponent implements OnInit {
 
   img: Image = <Image>{id: -1, url: '', altText: '', name: ''}
   editing = false;
+  showText = false;
   @Input() canEdit: boolean = false;
   @Input() userId: number = 0;
 
@@ -60,6 +61,10 @@ export class WorkExpItemComponent implements OnInit {
   toggleEdit(){
 	  this.editing = !this.editing;
 	  this.onEdit.emit(this.workExp.id)
+  }
+  
+  toggleShowText(){
+	  this.showText = !this.showText;
   }
 
 

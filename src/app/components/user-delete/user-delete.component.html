@@ -1,0 +1,11 @@
+<div class="container d-flex mt-5 justify-content-center" *ngIf="isLogged">
+	<div class="card ">
+		<div class="card-header"> 
+			Confirmar eliminación de usuario:
+		</div>
+		<div class="card-body">
+<button class="btn btn-danger m-3" (click)="deleteUser()">Eliminar</button>
+<button class="btn btn-secondary m-3" (click)="cancelDelete()">Cancelar</button>
+		</div>
+	</div>
+</div>

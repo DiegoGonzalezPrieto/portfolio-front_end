@@ -1,4 +1,4 @@
-<div class="card mb-2" style="max-width:100%; margin:5px">
+<div class="card m-2" style="max-width: 390px">
 	<div class="card-header">
 		{{typeFormat(workExp.type)}}
 	</div>
@@ -6,10 +6,13 @@
 			<h5 class="card-title">{{workExp.jobTitle}}</h5>
 			<img *ngIf="img" [src]="img.url" [alt]="img.altText" [name]="img.name" style="max-width:150px; max-height:150px" align="right">
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">Empresa - {{workExp.company}}</li>
+				<li class="list-group-item">En {{workExp.company}}</li>
 				<li class="list-group-item">Período: {{workExp.startYear}} - {{workExp.current ? "actual" : workExp.endYear}}</li>
-				<li class="list-group-item" [innerText]="workExp.description"></li>
+				<li class="list-group-item" [innerText]="showText ? workExp.description : workExp.description.slice(0,60) + '...'"></li>
 			</ul>
+			<div style="padding-left: 20px;">
+				<button class="btn btn-link" (click)="toggleShowText()" >Leer más...</button>
+			</div>
 
 		<div *ngIf="loggedIn">
 			<app-edit-button *ngIf="loggedIn && canEdit || loggedIn && userId == 1" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>

@@ -3,5 +3,6 @@ export interface JwtDto {
 	type: string,
 	userName: string,
 	personId: string,
+	userId: string,
 	authorities: string[]
 }

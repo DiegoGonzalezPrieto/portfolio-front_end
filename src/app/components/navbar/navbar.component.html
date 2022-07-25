@@ -1,30 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-	<div class="container-sm ">
-		<div class="w-25">
+	<div class="container ">
 			<a class="navbar-brand" href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa ">
-				<img class="w-50" src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1657411642/APLogo-20-20.png" alt="Argentina Programa" >
+				<img style="height: 4em" src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1657411642/APLogo-20-20.png" alt="Argentina Programa" >
 			</a>
-		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		<div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item mr-10">
-				<a class="nav-link text-light" style="cursor:pointer" (click)="goToProfile(null)" >Mi perfil</a>
+				<a class="nav-link text-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" style="cursor:pointer" (click)="goToProfile(null)" >Mi perfil</a>
 			</li>
 			<li class="nav-item mr-10">
-				<a class="nav-link text-light" style="cursor:pointer"(click)="goToProfile(adminId)">Perfil del programador</a>
+				<a class="nav-link text-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" style="cursor:pointer"(click)="goToProfile(adminId)">Perfil del programador</a>
 			</li>
 			<li class="nav-item mr-10">
-				<a class="nav-link text-light" style="cursor:pointer"(click)="goToAppInfo()">Acerca de este portfolio</a>
+				<a class="nav-link text-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" style="cursor:pointer"(click)="goToAppInfo()">Acerca de este portfolio</a>
+			</li>
+			<li class="nav-item mr-10" *ngIf="loggedIn">
+				<a class="nav-link text-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" style="cursor:pointer"(click)="goToDeleteUser()">Borrar cuenta</a>
 			</li>
 		</ul>
-		<div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
 			<div class="d-flex text-light align-items-center justify-content-end ">
 				<app-contact-info></app-contact-info>
-				<app-login-button [loggedIn]="loggedIn" (onLogOut)="onLogOut()"></app-login-button>
 			</div>
 		</div>
+				<app-login-button [loggedIn]="loggedIn" (onLogOut)="onLogOut()"></app-login-button>
 	</div>
 </nav>
 

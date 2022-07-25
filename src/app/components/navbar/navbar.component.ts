@@ -57,4 +57,8 @@ export class NavbarComponent implements OnInit {
 				this.router.navigate(['perfil/' + id + "/ver"])})
 		}
 	}
+
+	goToDeleteUser(){
+		this.router.navigate(["borrar"])
+	}
 }

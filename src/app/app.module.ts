@@ -36,6 +36,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
 import { FullProfileComponent } from './components/profile/full-profile/full-profile.component';
 import { AppInfoComponent } from './components/app-info/app-info.component';
+import { UserDeleteComponent } from './components/user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AppInfoComponent } from './components/app-info/app-info.component';
     PageNotFoundComponentComponent,
     FullProfileComponent,
     AppInfoComponent,
+    UserDeleteComponent,
   ],
   imports: [
     BrowserModule,

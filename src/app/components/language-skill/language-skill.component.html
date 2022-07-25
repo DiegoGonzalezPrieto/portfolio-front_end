@@ -13,20 +13,22 @@
 			(newLanguageSkill)="newLanguageSkill($event, profileId)">
 		</app-lang-skill-form>
 	</div>
-	<div *ngFor="let lSkill of langSkillList">
-		<app-lang-skill-item [langSkill]="lSkill" 
-			(onEdit)="toggleEditForm($event)" 
-			 [canEdit]="canEdit"
-			 	[userId]="userId"
-			*ngIf="!editingList.includes(lSkill.id) ">
-		</app-lang-skill-item>
-
-		<app-lang-skill-form [isEdit]="true" 
-			*ngIf="editingList.includes(lSkill.id)" 
-			[editedLanguageSkill]="lSkill" 
-			(editClick)="toggleEditForm($event)" 
-			(onEdit)="editLanguageSkill($event, lSkill.id)" 
-			(onDelete)="deleteLanguageSkill($event)">
-		</app-lang-skill-form>
+	<div class="card-group m-2 justify-content-center">
+		<div *ngFor="let lSkill of langSkillList">
+			<app-lang-skill-item [langSkill]="lSkill" 
+				(onEdit)="toggleEditForm($event)" 
+				 [canEdit]="canEdit"
+				 	[userId]="userId"
+				*ngIf="!editingList.includes(lSkill.id) ">
+			</app-lang-skill-item>
+		
+			<app-lang-skill-form [isEdit]="true" 
+				*ngIf="editingList.includes(lSkill.id)" 
+				[editedLanguageSkill]="lSkill" 
+				(editClick)="toggleEditForm($event)" 
+				(onEdit)="editLanguageSkill($event, lSkill.id)" 
+				(onDelete)="deleteLanguageSkill($event)">
+			</app-lang-skill-form>
+		</div>
 	</div>
 </div>

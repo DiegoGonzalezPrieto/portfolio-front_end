@@ -5,6 +5,7 @@ import {UserService} from './user.service';
 	const USERNAME_KEY = 'AuthUserName';
 	const AUTHORITIES_KEY = 'AuthAuthorities';
 	const PERSONID_KEY = 'AuthPersonId';
+	const USERID_KEY = 'AuthUserId';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,20 @@ export class TokenService {
 	  if (data) {
 		  return data;
 	  } else {return ""}
+  }
+
+  public setUserId(userId: string): void{
+	  window.sessionStorage.removeItem(USERID_KEY);
+	  window.sessionStorage.setItem(USERID_KEY, userId);
+  }
+
+  public getUserId(): string{
+	  const data = sessionStorage.getItem(USERID_KEY);
+	  if (data){
+		  return data;
+	  } else {
+		  return "";
+	  }
   }
 
   public logOut(): void{

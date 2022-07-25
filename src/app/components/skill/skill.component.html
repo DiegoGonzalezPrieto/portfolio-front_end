@@ -13,19 +13,21 @@
 			(newSkill)="newSkill($event, profileId)">
 		</app-skill-form>
 	</div>
-	<div *ngFor="let s of skillList">
-		<app-skill-item [skill]="s" 
-			(onEdit)="toggleEditForm($event)" 
-			 [canEdit]="canEdit"
-			 	[userId]="userId"
-			*ngIf="!editingList.includes(s.id)">
-		</app-skill-item>
-
-		<app-skill-form [isEdit]="true" 
-			*ngIf="editingList.includes(s.id)" 
-			[editedSkill]="s" 
-			(editClick)="toggleEditForm($event)" 
-			(onEdit)="editSkill($event, s.id)" 
-			(onDelete)="deleteSkill($event)"></app-skill-form>
+	<div class="card-group  m-2 justify-content-center">
+		<div *ngFor="let s of skillList">
+			<app-skill-item [skill]="s" 
+				(onEdit)="toggleEditForm($event)" 
+				 [canEdit]="canEdit"
+				 	[userId]="userId"
+				*ngIf="!editingList.includes(s.id)">
+			</app-skill-item>
+		
+			<app-skill-form [isEdit]="true" 
+				*ngIf="editingList.includes(s.id)" 
+				[editedSkill]="s" 
+				(editClick)="toggleEditForm($event)" 
+				(onEdit)="editSkill($event, s.id)" 
+				(onDelete)="deleteSkill($event)"></app-skill-form>
+		</div>
 	</div>
 </div>

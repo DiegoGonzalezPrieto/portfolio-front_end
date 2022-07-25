@@ -13,6 +13,7 @@
 			(newEducation)="newEducation($event, profileId)">
 		</app-education-form>
 	</div>
+<div class="card-group m-2 justify-content-center">
 	<div *ngFor="let e of educationList">
 		<app-education-item [education]="e" 
 			(onEdit)="toggleEditForm($event)" 
