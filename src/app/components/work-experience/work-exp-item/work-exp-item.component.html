@@ -11,7 +11,7 @@
 				<li class="list-group-item" [innerText]="showText ? workExp.description : workExp.description.slice(0,60) + '...'"></li>
 			</ul>
 			<div style="padding-left: 20px;">
-				<button class="btn btn-link" (click)="toggleShowText()" >Leer más...</button>
+				<button class="btn btn-link" (click)="toggleShowText()" >{{ showText ? '...menos.' : 'Leer más...'}}</button>
 			</div>
 
 		<div *ngIf="loggedIn">

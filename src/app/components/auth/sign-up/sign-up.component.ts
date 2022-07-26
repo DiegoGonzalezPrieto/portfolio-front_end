@@ -65,7 +65,7 @@ export class SignUpComponent implements OnInit {
 	},
 	err =>{
 		this.isSignUpFail = true;
-		this.errMsg = err;
+		this.errMsg = err.error.msg;
 		this.signupForm.reset();
 		this.signupForm.enable();
 

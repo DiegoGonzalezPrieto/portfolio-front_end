@@ -65,7 +65,10 @@
 					OK
 				</button>
 			</form>
-			<div *ngIf="isSignUpFail" class="container-sm alert alert-info">El registro falló.</div>
+			<div *ngIf="isSignUpFail" class="container-sm alert alert-info">El registro falló:
+<br>
+{{errMsg}}
+			</div>
 		</div>
 	</div>
 </div>

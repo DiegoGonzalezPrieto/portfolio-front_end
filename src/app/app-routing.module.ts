@@ -14,7 +14,7 @@ import {UserDeleteComponent} from './components/user-delete/user-delete.componen
 import {WorkExperienceComponent} from './components/work-experience/work-experience.component';
 
 const routes: Routes = [
-	{path: '', redirectTo: '/perfil/1', pathMatch: 'full'},
+	{path: '', redirectTo: '/perfil/1/ver', pathMatch: 'full'},
 	{path: 'login', component: LoginComponent},
 	{path: 'borrar', component: UserDeleteComponent},
 	{path: 'sign-up', component: SignUpComponent},

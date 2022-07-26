@@ -45,7 +45,6 @@ export class WorkExpItemComponent implements OnInit {
 
   typeFormat(type : string): string{
 	  switch (type){
-		  // TODO
 		  case "FULL_TIME":
 			  return "Full-time"
 		  case "PART_TIME":

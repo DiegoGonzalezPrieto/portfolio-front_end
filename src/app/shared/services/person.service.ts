@@ -24,21 +24,13 @@ export class PersonService {
 		const options = {params: new HttpParams().set('id', id)};
 		return this.http.get<Person>(this.url + '/get', options);
 		
-		// TODO : handle errors >> https://angular.io/guide/http#handling-request-errors
 	}
 
 	// GET ALL
 	getAllPerson(): Observable<Person[]>{
 		return this.http.get<Person[]>(this.url + '/get/all')
 	}
-/*
-TODO : GET by UserID
 
-	getPersonByPersonId(id: number): Observable<Person[]>{
-		const options = {params: new HttpParams().set('id', id)};
-		return this.http.get<Person[]>(this.url + '/person', options);
-	}
-*/
 	// DELETE by ID
 	deletePersonById(id: number): Observable<unknown>{
 		const options = {params: new HttpParams().set('id', id)};
