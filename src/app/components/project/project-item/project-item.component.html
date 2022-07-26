@@ -1,5 +1,5 @@
 <div class="card m-2" style="max-width: 390px">
-	<img *ngIf="img" class="card-img-top" style="max-height:200px"  [src]="img.url" [alt]="img.altText" [name]="img.name"> 
+	<img *ngIf="img" class="card-img-top" style="max-width:100%"  [src]="img.url" [alt]="img.altText" [name]="img.name"> 
 	<div class="card-body">
 		<h5 class="card-title ">{{project.name}}<a [href]="project.repoUrl" class="text-dark"><span class="badge bg-secondary m-1">Repo</span></a></h5>
 		<p class="card-text"  [innerText]="project.description"></p>
