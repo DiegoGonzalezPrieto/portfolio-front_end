@@ -4,7 +4,7 @@
 			<h2>Idiomas</h2>
 		</div>
 		<div class="col-2 text-center align-items-baseline" *ngIf="loggedIn">
-			<app-add-button *ngIf="loggedIn && canEdit || loggedIn && userId == 1" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
+			<app-add-button *ngIf="loggedIn && canEdit || loggedIn && userId == 13" [addForm]="addForm" (addClick)="toggleAddForm()" ></app-add-button>
 		</div>
 	</div>
 	<div *ngIf="addForm">

@@ -10,7 +10,7 @@ import {UserService} from 'src/app/shared/services/user.service';
 })
 export class ContactInfoComponent implements OnInit {
 
-  adminId = 1; 
+  adminId = 13; 
   userId = this.userServ.userId;
   loggedIn = this.userServ.loggedIn;
 

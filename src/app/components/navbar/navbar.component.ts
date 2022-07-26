@@ -10,7 +10,7 @@ import {UserService} from 'src/app/shared/services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
-	adminId = 1; 
+	adminId = 13; 
 	profileId = 0;
 	loggedIn = this.userServ.loggedIn;
 	userId = this.userServ.userId;

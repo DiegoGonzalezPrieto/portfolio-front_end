@@ -7,7 +7,7 @@
 		<p class="ml-1"><b>{{person.city.cityName + ", " + person.city.countryName}}</b></p>
 		<p class="text-light ml-1 lh-sm" [innerText]="person.briefCv"></p>
 		<div *ngIf="loggedIn">
-			<app-edit-button *ngIf="loggedIn && canEdit || loggedIn && userId == 1" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
+			<app-edit-button *ngIf="loggedIn && canEdit || loggedIn && userId == 13" [editForm]="editing" (editClick)="toggleEdit()"></app-edit-button>
 		</div>
 	</div>
 </div>
